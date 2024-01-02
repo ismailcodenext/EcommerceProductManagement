@@ -54,13 +54,18 @@
                     </a>
 
                 </li>
+                {{-- Product Menu--}}
                 <li>
-                    <a href="#sidebarDashboards" data-bs-toggle="collapse">
-                        <i class="fa-solid fa-cart-plus"></i>
-                        <span> Add Product </span>
-                    </a>
-
+                    <a href="{{route('product.index')}}"><i class="fa-solid fa-list"></i>Product List</a>
                 </li>
+                <li>
+                    <a href="{{route('product.create')}}"><i class="fa-solid fa-cart-plus"></i>Product Add</a>
+                </li>
+                <li>
+                    <a href="{{route('category.index')}}"><i class="fa-solid fa-layer-group"></i>Category List</a>
+                </li>
+
+
                 {{--                CRM MENU START--}}
                 <li>
                     <a href="#sidebarCrm" data-bs-toggle="collapse">
@@ -79,13 +84,13 @@
                                 <div class="collapse" id="sidebarCrmCustomer">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="">Add New Customer</a>
+                                            <a href="#">Add New Customer</a>
                                         </li>
                                         <li>
-                                            <a href="">All Coustomer</a>
+                                            <a href="#">All Coustomer</a>
                                         </li>
                                         <li>
-                                            <a href="">Customer Group</a>
+                                            <a href="#">Customer Group</a>
                                         </li>
                                     </ul>
                                 </div>
