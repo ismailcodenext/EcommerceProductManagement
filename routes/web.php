@@ -38,6 +38,9 @@ Route::middleware('auth', 'checkAdmin')->group(function () {
     Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::post('/product/update', [ProductController::class, 'update'])->name('product.update');
     Route::get('/product/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+    Route::post('/product/import', [ProductController::class, 'import'])->name('product.import');
+    Route::get('/product/import_view', [ProductController::class, 'import_view'])->name('product.import_view');
+    Route::get('/product/export', [ProductController::class, 'export'])->name('product.export');
 
 });
 //Category All Route

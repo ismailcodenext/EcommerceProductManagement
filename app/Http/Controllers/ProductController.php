@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProductExport;
+use App\Imports\ProductImport;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Jobs\SendProductCreatedEmail;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+
 
 class ProductController extends Controller
 {
@@ -70,5 +75,37 @@ class ProductController extends Controller
         ];
 
         return redirect()->route('product.index')->with($notification);
+    }
+
+    public function import_view(){
+        return view('product.import');
+    }
+    public function import()
+    {
+        $file = public_path('products.xlsx'); // Adjust the path as needed
+
+        if (!file_exists($file)) {
+            return redirect()->route('product.index')->with('error', 'File does not exist.');
+        }
+        $spreadsheet = IOFactory::load($file);
+        $data = $spreadsheet->getActiveSheet()->toArray();
+
+        foreach ($data as $row) {
+
+            Product::create([
+                'name' => $row[0],
+                'price' => $row[1],
+                'quantity' => $row[2],
+                'category_id' => $row[3],
+
+            ]);
+        }
+
+        return redirect()->route('product.index')->with('success', 'Products imported successfully!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProductExport, 'products.xlsx');
     }
 }

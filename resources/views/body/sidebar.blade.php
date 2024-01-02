@@ -64,44 +64,12 @@
                 <li>
                     <a href="{{route('category.index')}}"><i class="fa-solid fa-layer-group"></i>Category List</a>
                 </li>
-
-
-                {{--                CRM MENU START--}}
                 <li>
-                    <a href="#sidebarCrm" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-multiple-outline"></i>
-                        <span> CRM </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarCrm">
-                        <ul>
-                            <li>
-                                <a href="#sidebarCrmCustomer" data-bs-toggle="collapse">
-                                    <i class="mdi mdi-account-multiple-outline"></i>
-                                    <span> CUSTOMER </span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <div class="collapse" id="sidebarCrmCustomer">
-                                    <ul class="nav-second-level">
-                                        <li>
-                                            <a href="#">Add New Customer</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">All Coustomer</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Customer Group</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-
+                    <a href="{{route('product.import_view')}}"><i class="fa-solid fa-upload"></i>Product Import</a>
                 </li>
-
-
+                <li>
+                    <a href="{{route('product.export')}}"><i class="fa-solid fa-file-export"></i>Product Export</a>
+                </li>
 
 
             </ul>
