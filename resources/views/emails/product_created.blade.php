@@ -23,13 +23,9 @@
                         </ul>
 
                         <p>
-                            Thank you for using our application!
+                            Thank you
                         </p>
 
-                        <p>
-                            Best regards,<br>
-                            Your Application Team
-                        </p>
 
                     </div>
                 </div> <!-- end col -->
