@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ProductCreated;
+use App\Models\Product;
 
 class SendProductCreatedEmail implements ShouldQueue
 {
@@ -16,14 +17,17 @@ class SendProductCreatedEmail implements ShouldQueue
 
     public $product;
 
-    public function __construct($product)
+    public function __construct(Product $product)
     {
         $this->product = $product;
     }
 
     public function handle()
     {
-        // Logic to send email
-        Mail::to($this->product->user->email)->send(new ProductCreated($this->product));
+        $user = $this->product->user;
+
+        if ($user) {
+            Mail::to($user->email)->send(new ProductCreated($this->product));
+        }
     }
 }

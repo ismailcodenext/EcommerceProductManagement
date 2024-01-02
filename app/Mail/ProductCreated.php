@@ -13,14 +13,21 @@ class ProductCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $product;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($product)
     {
-        //
+        $this->product = $product;
     }
 
+    public function build()
+    {
+        return $this->view('emails.product_created')
+            ->subject('New Product Created');
+    }
     /**
      * Get the message envelope.
      */

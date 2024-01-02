@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Jobs\SendProductCreatedEmail;
 
 class ProductController extends Controller
 {
@@ -29,6 +30,8 @@ class ProductController extends Controller
 
         ]);
         $product = Product::create($validatedData);
+        $productWithUser = Product::with('user')->find($product->id);
+        SendProductCreatedEmail::dispatch($productWithUser);
         $notification = array(
             'message' => 'Product Inserted Successfully',
             'alert-type' => 'success'
