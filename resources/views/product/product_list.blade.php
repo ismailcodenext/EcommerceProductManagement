@@ -7,7 +7,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href=""
+                            <a href="{{route('product.create')}}"
                                class="btn btn-dark btn-rounded waves-effect waves-light"
                                style="float:right; margin-bottom:5px;"><i class="fa-solid fa-square-plus"></i> Add
                                 New Product</a>
@@ -23,6 +23,7 @@
                                     <th>Name</th>
                                     <th>Price </th>
                                     <th>Quantity</th>
+                                    <th>Category Name</th>
                                     <th>Action</th>
 
                                 </thead>
@@ -30,24 +31,28 @@
 
                                 <tbody>
 
-
+                                    @foreach($products as $product)
                                     <tr>
-                                        <td>  </td>
-                                        <td> </td>
-                                        <td> </td>
-                                        <td> </td>
+                                        <td> {{$product->id}} </td>
+                                        <td> {{$product->name}}</td>
+                                        <td> {{$product->price}}</td>
+                                        <td> {{$product->quantity}}</td>
+                                        <td> {{$product->category->name}}</td>
                                         <td>
 
-                                            <a href="" class="btn btn-info sm"
+                                            <a href="{{route('product.edit',$product->id )}}" class="btn btn-info sm"
                                                title="Edit Data"><i class="fas fa-edit"></i></a>
 
 
-                                            <a href=""
+                                            <a href="{{route('product.destroy',$product->id )}}"
                                                class="btn btn-danger sm" title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i> </a>
 
                                         </td>
 
                                     </tr>
+
+
+                                    @endforeach
 
 
                                 </tbody>
