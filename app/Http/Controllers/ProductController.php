@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkAdmin');
+    }
     public function index(){
         $products = Product::with('category')->get();
         return view('product.product_list',compact('products'));

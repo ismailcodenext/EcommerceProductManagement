@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/logout', [ProfileController::class, 'profile_logout'])->name('profile.logout');
 });
 //Product All Route
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'checkAdmin')->group(function () {
     Route::get('/product/index', [ProductController::class, 'index'])->name('product.index');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
 });
 //Category All Route
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','checkAdmin')->group(function () {
     Route::get('/category/index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
